@@ -18,7 +18,9 @@ package org.jbpm.formModeler.panels.modeler.backend.indexing;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Provider;
 
+import org.guvnor.common.services.project.model.Package;
 import org.guvnor.common.services.project.model.Project;
 import org.guvnor.common.services.project.service.ProjectService;
 import org.jbpm.formModeler.api.model.Form;
@@ -41,50 +43,56 @@ public class FormIndexer implements Indexer {
     private static final Logger logger = LoggerFactory.getLogger( FormIndexer.class );
 
     @Inject
+    @Named("ioStrategy")
+    protected Provider<IOService> ioServiceProvider;
+
+    @Inject
+    protected Provider<ProjectService> projectServiceProvider;
+
+    @Inject
+    protected Provider<FormSerializationManager> formSerializationManagerProvider;
+
+    @Inject
     protected FormResourceTypeDefinition formType;
 
-    @Inject
-    protected FormSerializationManager formSerializationManager;
-
-    @Inject
-    @Named("ioStrategy")
-    protected IOService ioService;
-
-    @Inject
-    protected ProjectService projectService;
-
     @Override
-    public boolean supportsPath( Path path ) {
+    public boolean supportsPath( final Path path ) {
         return formType.accept( Paths.convert( path ) );
     }
 
     @Override
-    public KObject toKObject( Path path ) {
+    public KObject toKObject( final Path path ) {
         KObject index = null;
 
         try {
-            Form form = formSerializationManager.loadFormFromXML( ioService.readAllString( path ).trim(), path.toUri().toString() );
+            Form form = formSerializationManagerProvider.get().loadFormFromXML( ioServiceProvider.get().readAllString( path ).trim(),
+                                                                                path.toUri().toString() );
 
-            final Project project = projectService.resolveProject( Paths.convert( path ) );
-            final org.guvnor.common.services.project.model.Package pkg = projectService.resolvePackage( Paths.convert( path ) );
+            final Project project = projectServiceProvider.get().resolveProject( Paths.convert( path ) );
+            final Package pkg = projectServiceProvider.get().resolvePackage( Paths.convert( path ) );
 
             final DefaultIndexBuilder builder = new DefaultIndexBuilder( project,
                                                                          pkg );
 
-            FormVisitor formVisitor = new FormVisitor( builder, form );
+            FormVisitor formVisitor = new FormVisitor( builder,
+                                                       form );
 
             formVisitor.visit();
 
-            index = KObjectUtil.toKObject( path, builder.build() );
+            index = KObjectUtil.toKObject( path,
+                                           builder.build() );
+
         } catch ( Exception e ) {
-            logger.error( "Unable to index '" + path.toUri().toString() + "'.", e.getMessage() );
+            logger.error( "Unable to index '" + path.toUri().toString() + "'.",
+                          e.getMessage() );
         }
 
         return index;
     }
 
     @Override
-    public KObjectKey toKObjectKey( Path path ) {
+    public KObjectKey toKObjectKey( final Path path ) {
         return KObjectUtil.toKObjectKey( path );
     }
+
 }

@@ -16,9 +16,9 @@
 package org.jbpm.formModeler.panels.modeler.backend.indexing;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.inject.Provider;
 
 import org.guvnor.common.services.project.model.Package;
 import org.guvnor.common.services.project.model.Project;
@@ -44,13 +44,13 @@ public class FormIndexer implements Indexer {
 
     @Inject
     @Named("ioStrategy")
-    protected Provider<IOService> ioServiceProvider;
+    protected Instance<IOService> ioServiceProvider;
 
     @Inject
-    protected Provider<ProjectService> projectServiceProvider;
+    protected Instance<ProjectService> projectServiceProvider;
 
     @Inject
-    protected Provider<FormSerializationManager> formSerializationManagerProvider;
+    protected Instance<FormSerializationManager> formSerializationManagerProvider;
 
     @Inject
     protected FormResourceTypeDefinition formType;

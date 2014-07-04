@@ -16,7 +16,6 @@
 package org.jbpm.formModeler.panels.modeler.backend.indexing;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -44,13 +43,13 @@ public class FormIndexer implements Indexer {
 
     @Inject
     @Named("ioStrategy")
-    protected Instance<IOService> ioServiceProvider;
+    protected IOService ioService;
 
     @Inject
-    protected Instance<ProjectService> projectServiceProvider;
+    protected ProjectService projectService;
 
     @Inject
-    protected Instance<FormSerializationManager> formSerializationManagerProvider;
+    protected FormSerializationManager formSerializationManager;
 
     @Inject
     protected FormResourceTypeDefinition formType;
@@ -65,11 +64,11 @@ public class FormIndexer implements Indexer {
         KObject index = null;
 
         try {
-            Form form = formSerializationManagerProvider.get().loadFormFromXML( ioServiceProvider.get().readAllString( path ).trim(),
-                                                                                path.toUri().toString() );
+            Form form = formSerializationManager.loadFormFromXML( ioService.readAllString( path ).trim(),
+                                                                  path.toUri().toString() );
 
-            final Project project = projectServiceProvider.get().resolveProject( Paths.convert( path ) );
-            final Package pkg = projectServiceProvider.get().resolvePackage( Paths.convert( path ) );
+            final Project project = projectService.resolveProject( Paths.convert( path ) );
+            final Package pkg = projectService.resolvePackage( Paths.convert( path ) );
 
             final DefaultIndexBuilder builder = new DefaultIndexBuilder( project,
                                                                          pkg );

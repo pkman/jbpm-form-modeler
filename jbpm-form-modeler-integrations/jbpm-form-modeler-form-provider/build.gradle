@@ -1,0 +1,13 @@
+
+description = ''
+dependencies {
+    compile group: 'org.kie', name: 'kie-api', version:'6.1.0.Final'
+    compile group: 'org.jbpm', name: 'jbpm-kie-services', version:'6.1.0.Final'
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

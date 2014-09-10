@@ -1,0 +1,19 @@
+
+description = 'jbpm-form-modeler-renderer-api'
+dependencies {
+    compile group: 'javax.enterprise', name: 'cdi-api', version:'1.0-SP4'
+    compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
+    compile(group: 'org.jboss.errai', name: 'errai-bus', version:'2.4.4.Final') {
+exclude(module: 'javax.inject')
+exclude(module: 'jsr250-api')
+exclude(module: 'slf4j-log4j12')
+exclude(module: 'netty')
+    }
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

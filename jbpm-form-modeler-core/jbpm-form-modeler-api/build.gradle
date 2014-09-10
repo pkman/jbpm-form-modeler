@@ -1,0 +1,18 @@
+
+description = ''
+dependencies {
+    compile(group: 'org.jboss.errai', name: 'errai-bus', version:'2.4.4.Final') {
+exclude(module: 'javax.inject')
+exclude(module: 'jsr250-api')
+exclude(module: 'slf4j-log4j12')
+exclude(module: 'netty')
+    }
+    compile group: 'org.kie', name: 'kie-internal', version:'6.1.0.Final'
+    compile group: 'javax.inject', name: 'javax.inject', version:'1'
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

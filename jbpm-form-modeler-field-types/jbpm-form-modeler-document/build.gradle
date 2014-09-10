@@ -1,0 +1,24 @@
+
+description = ''
+
+/*
+  providedCompile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-request-dispatcher')
+  providedCompile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-ui')
+*/
+
+dependencies {
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+    compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
+    compile group: 'commons-io', name: 'commons-io', version:'2.1'
+    compile group: 'commons-codec', name: 'commons-codec', version:'1.4'
+    compile group: 'org.freemarker', name: 'freemarker', version:'2.3.19'
+    compile group: 'org.jbpm', name: 'jbpm-document', version:'6.1.0.Final'
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-request-dispatcher')
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-ui')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

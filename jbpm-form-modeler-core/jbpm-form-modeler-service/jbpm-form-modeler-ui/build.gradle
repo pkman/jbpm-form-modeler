@@ -1,0 +1,16 @@
+
+apply plugin: 'war'
+
+jar.enabled = true
+description = 'jbpm-form-modeler-ui'
+dependencies {
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-service-core')
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-request-dispatcher')
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-static-resources')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

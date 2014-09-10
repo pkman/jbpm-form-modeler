@@ -1,0 +1,13 @@
+
+description = 'jbpm-form-modeler-editor-api'
+dependencies {
+    compile group: 'org.uberfire', name: 'uberfire-api', version:'0.4.0.Final'
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+    compile group: 'org.guvnor', name: 'guvnor-services-api', version:'6.1.0.Final'
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

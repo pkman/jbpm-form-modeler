@@ -1,0 +1,54 @@
+rootProject.name = 'jbpm-form-modeler'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-api'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-common'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-request-dispatcher'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-service-core'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-ui'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-form-editor'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-static-resources'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-app'
+include ':jbpm-form-modeler-core:jbpm-form-modeler-service'
+include ':jbpm-form-modeler-core'
+include ':jbpm-form-modeler-integrations:jbpm-form-modeler-data-modeler'
+include ':jbpm-form-modeler-integrations:jbpm-form-modeler-form-provider'
+include ':jbpm-form-modeler-integrations:jbpm-form-modeler-bpmn-form-builder'
+include ':jbpm-form-modeler-integrations'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-api'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-backend'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-client'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-editor'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-api'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-backend'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-client'
+include ':jbpm-form-modeler-panels:jbpm-form-modeler-renderer'
+include ':jbpm-form-modeler-panels'
+include ':jbpm-form-modeler-field-types:jbpm-form-modeler-document'
+include ':jbpm-form-modeler-field-types'
+include ':jbpm-form-modeler-showcase'
+
+project(':jbpm-form-modeler-core:jbpm-form-modeler-api').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-api" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-common').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-common" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-request-dispatcher').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-request-dispatcher" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-service-core').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-service-core" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-ui').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-ui" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-form-editor').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-form-editor" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-static-resources').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-static-resources" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service:jbpm-form-modeler-app').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service/jbpm-form-modeler-app" as File
+project(':jbpm-form-modeler-core:jbpm-form-modeler-service').projectDir = "$rootDir/jbpm-form-modeler-core/jbpm-form-modeler-service" as File
+project(':jbpm-form-modeler-core').projectDir = "$rootDir/jbpm-form-modeler-core" as File
+project(':jbpm-form-modeler-integrations:jbpm-form-modeler-data-modeler').projectDir = "$rootDir/jbpm-form-modeler-integrations/jbpm-form-modeler-data-modeler" as File
+project(':jbpm-form-modeler-integrations:jbpm-form-modeler-form-provider').projectDir = "$rootDir/jbpm-form-modeler-integrations/jbpm-form-modeler-form-provider" as File
+project(':jbpm-form-modeler-integrations:jbpm-form-modeler-bpmn-form-builder').projectDir = "$rootDir/jbpm-form-modeler-integrations/jbpm-form-modeler-bpmn-form-builder" as File
+project(':jbpm-form-modeler-integrations').projectDir = "$rootDir/jbpm-form-modeler-integrations" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-api').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-editor/jbpm-form-modeler-editor-api" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-backend').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-editor/jbpm-form-modeler-editor-backend" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-client').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-editor/jbpm-form-modeler-editor-client" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-editor').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-editor" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-api').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-renderer/jbpm-form-modeler-renderer-api" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-backend').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-renderer/jbpm-form-modeler-renderer-backend" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-client').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-renderer/jbpm-form-modeler-renderer-client" as File
+project(':jbpm-form-modeler-panels:jbpm-form-modeler-renderer').projectDir = "$rootDir/jbpm-form-modeler-panels/jbpm-form-modeler-renderer" as File
+project(':jbpm-form-modeler-panels').projectDir = "$rootDir/jbpm-form-modeler-panels" as File
+project(':jbpm-form-modeler-field-types:jbpm-form-modeler-document').projectDir = "$rootDir/jbpm-form-modeler-field-types/jbpm-form-modeler-document" as File
+project(':jbpm-form-modeler-field-types').projectDir = "$rootDir/jbpm-form-modeler-field-types" as File
+project(':jbpm-form-modeler-showcase').projectDir = "$rootDir/jbpm-form-modeler-showcase" as File

@@ -1,0 +1,18 @@
+
+description = 'jbpm-form-modeler-editor-backend'
+dependencies {
+    compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
+    compile group: 'org.guvnor', name: 'guvnor-project-api', version:'6.1.0.Final'
+    compile group: 'org.kie.workbench.services', name: 'kie-wb-common-data-modeller-core', version:'6.1.0.Final'
+    compile group: 'org.uberfire', name: 'uberfire-io', version:'0.4.0.Final'
+    compile group: 'org.uberfire', name: 'uberfire-metadata-api', version:'0.4.0.Final'
+    compile group: 'org.kie.workbench.services', name: 'kie-wb-common-refactoring-backend', version:'6.1.0.Final'
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+  compile project(':jbpm-form-modeler-panels:jbpm-form-modeler-editor:jbpm-form-modeler-editor-api')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests

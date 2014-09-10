@@ -1,0 +1,20 @@
+
+description = 'jbpm-form-modeler-renderer-backend'
+dependencies {
+    compile(group: 'org.jboss.errai', name: 'errai-bus', version:'2.4.4.Final') {
+exclude(module: 'javax.inject')
+exclude(module: 'jsr250-api')
+exclude(module: 'slf4j-log4j12')
+exclude(module: 'netty')
+    }
+  compile project(':jbpm-form-modeler-core:jbpm-form-modeler-api')
+  compile project(':jbpm-form-modeler-panels:jbpm-form-modeler-renderer:jbpm-form-modeler-renderer-api')
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.2'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:'1.0.9'
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests
